@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Discount Generating Page
+    </title>
+    <header>
+        <h1>Sanjay Kumar Computes Discount</h1>
+    </header>
+</head>
+
+<body>
+
+    <label for="base">Enter base amount</label>
+
+    <input type="number" intial value="20" id="base" name="base" text="base"><br>
+
+    <label for="discount">Enter the discount percentage</label>
+    <input type="number" intial value="10" id="discount" name="discount" text="disount" value="discount"><br>
+
+    <button type="button" onclick="discount()" value="">Apply discount</button><br>
+
+    <label for="dis">Click me</label>
+    <input type="button" onclick=" discount()" id="dis">
+
+    <p id="results">
+    <h3></h3>
+    </p>
+
+    <script>
+        result = "";
+        function discount() {
+            let i = 1;
+            l = document.getElementById("base");
+            d = document.getElementById("discount");
+
+            while (i < 6) {
+                let num = i*l;
+                let per = d;
+                function percentage(num, per) {
+                    return (num / 100) * per;
+                }
+                result = result.concat("",percentage(num,per));
+                break;
+            }
+            console.log(result);
+            document.getElementById("results").innerHTML = result;
+            //document.getElementById("results").innerHTML = "hello";
+        }
+
+    </script>
+
+</body>
+
+</html>
