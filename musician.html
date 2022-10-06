@@ -31,7 +31,7 @@
 
         let correct = 0;
         let wrong = 0;
-
+        let wrongcounter = 0;
         function checkGuess() {
             console.log("Getting form values")
 
@@ -51,9 +51,20 @@
             } else {
                 wrong = wrong + 1;
                 alert("“Wrong Musician");
+                wrongcounter++;
+                if(wrongcounter ==3)
+                {
+                    gameOver();
+                }
+
             }
         out.innerHTML = "correct " + correct + "  wrong " + wrong
 
+        }
+
+        function gameOver()
+        {
+            alert("Sorry, Game Over !")
         }
 
         let useImage =1;
