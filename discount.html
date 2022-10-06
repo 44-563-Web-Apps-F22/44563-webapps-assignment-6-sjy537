@@ -13,7 +13,6 @@
 <body>
 
     <label for="base">Enter base amount</label>
-
     <input type="number" intial value="20" id="base" name="base" text="base"><br>
 
     <label for="discount">Enter the discount percentage</label>
@@ -21,33 +20,62 @@
 
     <button type="button" onclick="discount()" value="">Apply discount</button><br>
 
-    <label for="dis">Click me</label>
-    <input type="button" onclick=" discount()" id="dis">
 
-    <p id="results">
-    <h3></h3>
-    </p>
+    <p id="results"> </p>
+
+    <input type="radio" id="mul" value="times" name="rg" onclick="chooseOp()">
+    <label for="mul"> *</label><br>
+
+    <input type="radio" id="divi" value="divide" name="rg" onclick="chooseOp()">
+    <label for="divi"> /</label><br>
+
+    <input type="radio" id="exp" value="exponent" name="rg" onclick="chooseOp()">
+    <label for="exp">**</label><br>
+    </div>
+
+    <p id="calc-result"></p>
+
+    <p id="calc-result"></p>
+
+
 
     <script>
         result = "";
         function discount() {
+            n1 = document.getElementById("base").value;
+            n2 = document.getElementById("discount").value;
             let i = 1;
-            l = document.getElementById("base");
-            d = document.getElementById("discount");
-
             while (i < 6) {
-                let num = i*l;
-                let per = d;
-                function percentage(num, per) {
-                    return (num / 100) * per;
-                }
-                result = result.concat("",percentage(num,per));
-                break;
+                n3 = i * n1;
+                var x = myFunction(n3, n2);
+                result = result + " " + (n3 - x);
+                i++;
             }
-            console.log(result);
             document.getElementById("results").innerHTML = result;
-            //document.getElementById("results").innerHTML = "hello";
         }
+        function myFunction(a, b) {
+            return (a / 100) * b;
+        }
+
+        function chooseOp() {
+            var radioButtons = document.getElementsByName("rg");
+            for (var i = 0; i < radioButtons.length; i++) {
+                n1 = document.getElementById("base").value;
+                n2 = document.getElementById("discount").value;
+                let n3;
+                if (radioButtons[0].checked == true) {
+                    n3 = n1 * n2;
+                }
+                else if (radioButtons[1].checked == true) {
+                    n3 = n1 / n2;
+                }
+                else if (radioButtons[2].checked == true) {
+                    n3 = n1 ** n2;
+                }
+                document.getElementById("calc-result").innerHTML = n3;
+            }
+        }
+
 
     </script>
 
